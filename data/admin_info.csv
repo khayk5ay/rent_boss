@@ -1,0 +1,134 @@
+,admin1,admin1_name,country
+0,00,n/a,NG
+1,05,Lagos State,NG
+2,11,Federal Capital Territory,NG
+3,16,Ogun State,NG
+4,21,Akwa Ibom State,NG
+5,22,Cross River State,NG
+6,23,Kaduna State,NG
+7,24,Katsina State,NG
+8,25,Anambra State,NG
+9,26,Benue State,NG
+10,27,Borno State,NG
+11,28,Imo State,NG
+12,29,Kano State,NG
+13,30,Kwara State,NG
+14,31,Niger State,NG
+15,32,Oyo State,NG
+16,35,Adamawa State,NG
+17,36,Delta State,NG
+18,37,Edo,NG
+19,39,Jigawa State,NG
+20,40,Kebbi State,NG
+21,41,Kogi State,NG
+22,42,Osun State,NG
+23,43,Taraba State,NG
+24,44,Yobe State,NG
+25,45,Abia State,NG
+26,46,Bauchi State,NG
+27,47,Enugu State,NG
+28,48,Ondo State,NG
+29,49,Plateau State,NG
+30,50,Rivers State,NG
+31,51,Sokoto State,NG
+32,52,Bayelsa State,NG
+33,53,Ebonyi State,NG
+34,54,Ekiti State,NG
+35,55,Gombe State,NG
+36,56,Nasarawa State,NG
+37,57,Zamfara State,NG
+38,00,n/a,GH
+39,01,Greater Accra Region,GH
+40,02,Ashanti Region,GH
+41,03,n/a,GH
+42,04,Central Region,GH
+43,05,Eastern Region,GH
+44,06,Northern Region,GH
+45,08,Volta Region,GH
+46,09,Western Region,GH
+47,10,Upper East Region,GH
+48,11,Upper West Region,GH
+49,12,Ahafo,GH
+50,13,Bono,GH
+51,14,Bono East,GH
+52,15,North East,GH
+53,16,Oti,GH
+54,17,Savannah,GH
+55,18,Western North,GH
+56,00,n/a,BJ
+57,07,Alibori,BJ
+58,08,Atakora Department,BJ
+59,09,Atlantique Department,BJ
+60,10,Borgou Department,BJ
+61,11,Collines Department,BJ
+62,12,Kouffo Department,BJ
+63,13,Donga,BJ
+64,14,Littoral,BJ
+65,15,Mono,BJ
+66,16,Departement de l'Oueme,BJ
+67,17,Plateau Department,BJ
+68,18,Zou Department,BJ
+69,00,n/a,SN
+70,01,Dakar,SN
+71,03,Diourbel,SN
+72,05,Tambacounda,SN
+73,07,Region de Thies,SN
+74,09,Fatick,SN
+75,10,Kaolack,SN
+76,11,Kolda,SN
+77,12,Ziguinchor,SN
+78,13,Louga,SN
+79,14,Saint-Louis,SN
+80,15,Matam,SN
+81,16,Region de Kaffrine,SN
+82,17,Region de Kedougou,SN
+83,18,Region de Sedhiou,SN
+84,00,n/a,BF
+85,01,Boucle du Mouhoun Region,BF
+86,02,Cascades Region,BF
+87,03,Centre,BF
+88,04,Centre-Est,BF
+89,05,Centre-Nord,BF
+90,06,Centre-Ouest,BF
+91,07,Centre-Sud,BF
+92,08,Est,BF
+93,09,High-Basins Region,BF
+94,10,Nord,BF
+95,11,Plateau-Central,BF
+96,12,Sahel,BF
+97,13,Southwest Region,BF
+98,16,n/a,BF
+99,24,n/a,BF
+100,85,n/a,BF
+101,x15,n/a,BF
+102,x16,n/a,BF
+103,x18,n/a,BF
+104,x19,n/a,BF
+105,x20,n/a,BF
+106,x21,n/a,BF
+107,x22,n/a,BF
+108,x24,n/a,BF
+109,x25,n/a,BF
+110,x27,n/a,BF
+111,x28,n/a,BF
+112,x30,n/a,BF
+113,x34,n/a,BF
+114,x35,n/a,BF
+115,x42,n/a,BF
+116,x43,n/a,BF
+117,x44,n/a,BF
+118,00,n/a,NE
+119,01,Agadez,NE
+120,02,Diffa,NE
+121,03,Dosso Region,NE
+122,04,Maradi,NE
+123,06,Tahoua,NE
+124,07,Zinder,NE
+125,08,Niamey,NE
+126,09,Tillaberi Region,NE
+127,00,n/a,TG
+128,22,Centrale,TG
+129,23,Kara,TG
+130,24,Maritime,TG
+131,25,Plateaux,TG
+132,26,Savanes,TG

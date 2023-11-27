@@ -1,0 +1,20 @@
+1. Download mysql server on my pc - DONE
+2. connect to the database - DONE
+3. Read info from airbnb into the database
+4. create airbnb class
+5. add functionality to the class 
+
+
+SECTION 3:
+The focus is going to be west african countries and the listings
+
+In the extract phase: Extract info from the api that an give the following information
+
+Administrative regions
+Listings based on administrative divisions
+Listngs status
+listing reviews
+list of countries 
+
+In the Transform phase: TBD
+
