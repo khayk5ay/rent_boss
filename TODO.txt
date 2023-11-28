@@ -12,9 +12,14 @@ In the extract phase: Extract info from the api that an give the following infor
 
 Administrative regions
 Listings based on administrative divisions
-Listngs status
+Listngs details
 listing reviews
 list of countries 
 
-In the Transform phase: TBD
+In the Transform phase: 
+
+1. For admin info, replce any NULL value in the admn_name to the same as admin1
+2. For listing_georef, nothing to transform. it is already good
+3. For listing_details TBD
+4. For listing_reviews TBD
 
