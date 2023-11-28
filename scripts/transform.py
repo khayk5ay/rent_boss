@@ -5,23 +5,32 @@
 """
 
 import pandas as pd
+import numpy as np
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
+base_path = os.environ["BASE_DIR"]
 
 def admin_info_transform():
+    file_path = base_path+"/data/admin_info.json"
 
+    df = pd.read_json(file_path)
+    df.admin1_name = np.where(df["admin1_name"] == "n/a", df["admin1"], df["admin1_name"])
     pass
 
 def listing_georef_transform():
-    base_path = os.environ["BASE_DIR"]
-    listing_georef = pd.read_csv(f"{base_path}/data/listing_georef.csv", parse_dates=["last_updated", "last_avail_check", "last_ratings"], index_col=0, dtype={"airbnb_id":str})
-    listing_georef.to_csv(f"{base_path}/data/listing_georef_clean.csv")
+    
+    pass
+
+def listing_status_transform():
+    
+    pass
 
 
 
 def main():
     admin_info_transform()
     listing_georef_transform()
+    
