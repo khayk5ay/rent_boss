@@ -2,10 +2,6 @@
 # ignore my .env file
 .env
 
-# Ignore all csv files except the countries file
-*.csv
+# Ignore all files in data directory except the countries file
+data/
 !data/countries.csv
-
-
-# Ignore all json files
-*.json
