@@ -4,7 +4,7 @@
 
 # Ignore all csv files except the countries file
 *.csv
-! data/countries.csv
+!data/countries.csv
 
 
 # Ignore all json files
