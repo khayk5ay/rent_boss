@@ -1,6 +1,7 @@
 # Import necessary packages
 import MySQLdb
 from sqlalchemy import create_engine, text
+from sqlalchemy.orm import Session, declarative_base
 import os
 from dotenv import load_dotenv
 
@@ -20,4 +21,7 @@ class Engine:
 
     def make_engine(self):
         return(create_engine(f"mysql+mysqldb://{user}:{password}@localhost/{self.database_name}", echo=True))
+
+
+Base = declarative_base()
 
