@@ -13,7 +13,7 @@ Extract info from the api that an give the following information
 
 Administrative regions
 Listings based on administrative divisions
-Listngs details
+Listings details
 listing reviews
 list of countries 
 
@@ -38,5 +38,7 @@ Automation workflow
 Environment/Infrastructure (AWS, Kubernetes, Spark Clusters, etc.)
 Analytics output if possible (BI dashboards)
 
+
+Figure out a way to get more information from the API, since each call only returns 50 records.
 
 
