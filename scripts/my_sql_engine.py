@@ -24,4 +24,3 @@ class Engine:
 
 
 Base = declarative_base()
-
