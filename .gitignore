@@ -5,3 +5,5 @@
 # Ignore all files in data directory except the countries file
 data/
 !data/countries.csv
+
+__pycache__/
