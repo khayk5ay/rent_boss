@@ -8,6 +8,7 @@ import os
 from dotenv import load_dotenv
 import requests
 import pandas as pd
+import json
 
 load_dotenv()
 base_path = os.environ["BASE_DIR"]+"/data"
@@ -22,17 +23,19 @@ def response_to_json(response, path, listing_id):
     # Extract the results from the get request response
     try:
         results = response.json()["results"]
+        
 
     except:
-        results = response.json()
-        print(results)
-    
-    # Add a key value pair to specify the country for each entry
-    # This is necessary because each json file will contain information for multiple countries
-    for i in results:
-        i["listing_id"] = listing_id
+        # If there are no reviews for that listing, convert the response to a json by making it a list of dicts
+        results = [response.json()]
 
-    # Extend the already exisitng json file with listing id information 
+        
+    # Add a key value pair to specify the country for each entry
+    # This is necessary because each json file will contain information for multiple countries   
+    for i in results:
+            i["listing_id"] = listing_id    
+
+    # Extend the already exisitng json file with listing review information 
     try:
         with open(path, "r") as f:
             info = json.load(f)
@@ -63,10 +66,31 @@ def get_listing_reviews(listing_id, url = "https://airbnb-listings.p.rapidapi.co
     response_to_json(response=response, path=data_path, listing_id=listing_id)   
 
 
+def get_listing_descriptions(listing_id, url="https://airbnb-listings.p.rapidapi.com/v2/listing"):
+    
+    # Specify the file name
+    filename = "listing_descriptions.json"
+
+    # Specify the path to the file
+    data_path = base_path+"/"+filename
+    
+    querystring = {"id":str(listing_id)}
+
+    # Make request to the API and save the response
+    response = requests.get(url, headers=headers, params=querystring)
+
+    # Convert the results from the get request to a json file
+    response_to_json(response=response, path=data_path, listing_id=listing_id)
+    
 
 
-
-listings = pd.read_csv(f"{base_path}/listing_georef.csv", usecols=[1]).head(3)
+listings = pd.read_csv(f"{base_path}/listing_georef.csv", usecols=[1]).head(10)
+print(listings)
 
 for each in listings.values:
-    get_listing_reviews(each)
+    # "each" returns a numpy array therefore we need to collect the listing id as the first element in the array
+    # The listing id is needed in string format therefore we need to then convert the listing id to string
+    get_listing_reviews(str(each[0]))
+    get_listing_descriptions(str(each[0]))
+
+
