@@ -28,9 +28,9 @@ In the Transform phase:
 
 Create a data architecture diagram using lucid chart/draw.io
 It will include the following:
-Data sources
-Data destinations
-Data store (databases, data warehouse, or data lake)
+Data sources: Rapid API for airbnb info
+Data destinations: my computer
+Data store (databases, data warehouse, or data lake): my SQLServer Database
 Data ingestion process (CDC, Kafka, or airbyte/fivetran, etc.)
 Staging vs production zones
 Critical logics in your pipelines
