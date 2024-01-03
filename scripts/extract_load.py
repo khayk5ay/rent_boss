@@ -89,13 +89,10 @@ listings_raw = pd.read_csv(f"{base_path}/listing_georef.csv", usecols=[1])
 #Filter listings for IDs that have reviews and descriptions (Only IDs less than 9 digits)
 listings = listings_raw[(listings_raw["airbnb_id"]).astype(str).str.len() < 9]
 
-print(len(listings)
 
-"""
 for each in listings.values:
     # "each" returns a numpy array therefore we need to collect the listing id as the first element in the array
     # The listing id is needed in string format therefore we need to then convert the listing id to string
     get_listing_reviews(str(each[0]))
     get_listing_descriptions(str(each[0]))
 
-"""
