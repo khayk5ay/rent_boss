@@ -13,8 +13,10 @@ Extract info from the api that an give the following information
 
 Administrative regions
 Listings based on administrative divisions
-Listings details
-listing reviews
+Listings details (I noticed that only listings with 8 digit listing id have any activity on them. Lets see if we can narrow the request don to take only those
+)
+listing reviews (I noticed that only listings with 8 digit listing id have any activity on them. Lets see if we can narrow the request don to take only those
+)
 list of countries 
 
 In the Transform phase: 
@@ -38,6 +40,7 @@ Automation workflow
 Environment/Infrastructure (AWS, Kubernetes, Spark Clusters, etc.)
 Analytics output if possible (BI dashboards)
 
+I have figured out the database design/schema for the rentboss database. Currently implementiong it in lucid chart.
 
 Figure out a way to get more information from the API, since each call only returns 50 records.
 
