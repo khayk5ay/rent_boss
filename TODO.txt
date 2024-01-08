@@ -1,29 +1,33 @@
 1. Download mysql server on my pc - DONE
 2. connect to the database - DONE
-3. Read info from airbnb into the database
-4. create airbnb class
-5. add functionality to the class 
-
+3. create all the necessary tables in the databse
+4. Read info from airbnb into the database
+5. create airbnb class
+6. add functionality to the class 
 
 SECTION 3:
+
+Done: I have figured out the database design/schema for the rentboss database
+
+
+SECTION 4:
 The focus is going to be west african countries and the listings
 
 In the Extract phase: 
-Extract info from the api that an give the following information
+Done: Extract info from the api that an give the following information
 
 Administrative regions
-Listings based on administrative divisions
-Listings details (I noticed that only listings with 8 digit listing id have any activity on them. Lets see if we can narrow the request don to take only those
-)
-listing reviews (I noticed that only listings with 8 digit listing id have any activity on them. Lets see if we can narrow the request don to take only those
-)
-list of countries 
+Done: Listings based on administrative divisions
+Listings details (only listings with 8 digit listing id have any activity on them)
+Done: listing reviews (only listings with 8 digit listing id have any activity on them)
+Done: list of countries 
+listing locations
 
 In the Transform phase: 
 
 1. For admin info, replce any NULL value in the admn_name to the same as admin1
 2. For listing_georef, nothing to transform. it is already good
-3. For listing_details TBD
+3. For listing_details, extract some columns from listing details to form listing location table
 4. For listing_reviews TBD
 
 
@@ -40,8 +44,5 @@ Automation workflow
 Environment/Infrastructure (AWS, Kubernetes, Spark Clusters, etc.)
 Analytics output if possible (BI dashboards)
 
-I have figured out the database design/schema for the rentboss database. Currently implementiong it in lucid chart.
-
-Figure out a way to get more information from the API, since each call only returns 50 records.
 
 
