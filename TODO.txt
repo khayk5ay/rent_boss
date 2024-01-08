@@ -18,13 +18,12 @@ Listings details (I noticed that only listings with 8 digit listing id have any 
 listing reviews (I noticed that only listings with 8 digit listing id have any activity on them. Lets see if we can narrow the request don to take only those
 )
 list of countries 
-listing locations
 
 In the Transform phase: 
 
 1. For admin info, replce any NULL value in the admn_name to the same as admin1
 2. For listing_georef, nothing to transform. it is already good
-3. For listing_details, extract some columns from listing details to form listing location table
+3. For listing_details TBD
 4. For listing_reviews TBD
 
 
