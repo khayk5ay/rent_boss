@@ -40,7 +40,7 @@ CREATE TABLE listings (
 CREATE TABLE listing_reviews (
 	review_id INT,
 	comments VARCHAR(255),
-	response IVARCHAR(255),
+	response VARCHAR(255),
 	date_time DATETIME,
 	language VARCHAR(55),
 	rating FLOAT,
@@ -50,3 +50,4 @@ CREATE TABLE listing_reviews (
 	FOREIGN KEY (listing_id) REFERENCES listings(listing_id),
 	CONSTRAINT FK_listing_reviews_id FOREIGN KEY (listing_id) REFERENCES listings(listing_id)
 );
+
