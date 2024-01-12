@@ -1,0 +1,52 @@
+CREATE TABLE listing_descriptions (
+	listing_id INT,
+	listing_title VARCHAR(255),
+	review_count INT,
+	star_rating FLOAT,
+	max_guest_capacity INT,
+	property_type VARCHAR(55),
+	user_id INT,
+	listing_status VARCHAR(55),
+	PRIMARY KEY (listing_id),
+	CONSTRAINT FK_listing_id FOREIGN KEY (listing_id) REFERENCES listings(listing_id)
+);
+
+
+CREATE TABLE admin_info (
+	admin_id VARCHAR(55),
+	admin_name VARCHAR(55),
+	country VARCHAR(55),
+	PRIMARY KEY(admin_id, admin_name),
+	CONSTRAINT FK_country FOREIGN KEY (country) REFERENCES countries(country_code)
+);
+
+CREATE TABLE countries (
+	country_name VARCHAR(55),
+	country_code CHAR(3),
+	PRIMARY KEY (country_code)
+);
+
+CREATE TABLE listings (
+	listing_id INT,
+	last_updated DATETIME,
+	last_available DATETIME,
+	last_rating DATETIME,
+	country CHAR(2),
+	PRIMARY KEY (listing_id)
+	FOREIGN KEY (country) REFERENCES countries(country_code)
+);
+
+
+CREATE TABLE listing_reviews (
+	review_id INT,
+	comments VARCHAR(255),
+	response IVARCHAR(255),
+	date_time DATETIME,
+	language VARCHAR(55),
+	rating FLOAT,
+	guest_id INT,
+	listing_id INT,
+	PRIMARY KEY (review_id),
+	FOREIGN KEY (listing_id) REFERENCES listings(listing_id),
+	CONSTRAINT FK_listing_reviews_id FOREIGN KEY (listing_id) REFERENCES listings(listing_id)
+);
