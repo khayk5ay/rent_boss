@@ -80,7 +80,7 @@ def get_admin_info(url= "https://airbnb-listings.p.rapidapi.com/v2/getadmins", c
 def get_listing_by_georef(url = "https://airbnb-listings.p.rapidapi.com/v2/listingsByGeoRef", country="NG", offset="0", date_string="2024-01-18"):
     
     # Specify the file name
-    filename = "listing_georef"
+    filename = "listing_georef.json"
 
     # Specify the path to the file
     data_path = base_path+"/"+filename
