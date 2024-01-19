@@ -34,8 +34,10 @@ current_date = datetime.datetime.today()
 current_date_string = datetime.datetime.strftime(current_date, "%Y-%m-%d")
 
 # Increase the offset based on the number of days. first day will be 0, second day will be 50, third will be 100
-offset_number = int(current_date.day - start_date.day) * 50
-offset = str(offset_number)
+offset_number = int(current_date.day - start_date.day)
+offset = str(offset_number*50)
+print("This is Day {offset_number +1}") 
+print("Starting from number {offset}")
 
 
 """
@@ -53,7 +55,8 @@ if offset_number == 0:
 """
 # Only perform for the first 10 days
 if offset_number < 10:    
-    for c in countries: 
+    for c in countries:
+        print(f"Extracting {c} for Day {offset_number + 1}")
         extract.get_listing_by_georef(country=c, offset=offset, date_string=current_date_string)
 
 
