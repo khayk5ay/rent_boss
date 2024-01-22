@@ -87,11 +87,16 @@ def get_listing_by_georef(url = "https://airbnb-listings.p.rapidapi.com/v2/listi
 
     querystring = {"state":country, "offset":offset}
 
-    # Make request to the API and save the response
-    response = requests.get(url, headers=headers, params=querystring)
+    # If the offset is within range for the particular country
+    try: 
+        # Make request to the API and save the response
+        response = requests.get(url, headers=headers, params=querystring)
 
-    # Convert the results from the get request to a json file
-    response_to_json(response=response, path=data_path, use=1, country=country)
+        # Convert the results from the get request to a json file
+        response_to_json(response=response, path=data_path, use=1, country=country)
+
+    except:
+        return
 
 
 def get_listing_reviews(listing_id, url = "https://airbnb-listings.p.rapidapi.com/v2/listingReviews"):
