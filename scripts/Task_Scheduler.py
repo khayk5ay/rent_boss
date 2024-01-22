@@ -28,7 +28,7 @@ os.makedirs(base_path, exist_ok=True)
 countries = pd.read_csv(f"{base_path}/countries.csv")["country_code"].str.strip()
 
 # Collect information for all the countries for our database and analysis [West Africa]
-start_date = datetime.datetime.strptime("2024-01-18", "%Y-%m-%d")
+start_date = datetime.datetime.strptime("2024-01-13", "%Y-%m-%d")
 
 current_date = datetime.datetime.today()
 current_date_string = datetime.datetime.strftime(current_date, "%Y-%m-%d")
@@ -36,8 +36,9 @@ current_date_string = datetime.datetime.strftime(current_date, "%Y-%m-%d")
 # Increase the offset based on the number of days. first day will be 0, second day will be 50, third will be 100
 offset_number = int(current_date.day - start_date.day)
 offset = str(offset_number*50)
-print("This is Day {offset_number +1}") 
-print("Starting from number {offset}")
+day = offset_number+1
+print(f"This is Day {day}") 
+print(f"Starting from number {offset}")
 
 
 """
