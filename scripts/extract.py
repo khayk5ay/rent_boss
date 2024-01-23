@@ -27,9 +27,20 @@ os.makedirs(base_path, exist_ok=True)
 countries = pd.read_csv(f"{base_path}/countries.csv")["country_code"].str.strip()
 
 def response_to_json(response, path, use=1, country="NA", listing_id="NA"):
-    
-    # Extract the results from the get request response
-    results = response.json()["results"]
+
+    try: 
+        # Extract the results from the get request response
+        results = response.json()["results"]
+    except KeyError:
+        # When the quota is exceeded for the day, then there is no result and it will throw key error.
+        # If the country does not have any values in the range covered, then there won't be any result and it will throw keyerror.
+        # To differentiate the causes of the keyerror, use the if else block.
+        if country == "NA" : #Meaning it is not about the country not having values in the range of the offset.
+            print("Quota exceeded for today")
+            return "Error 1" 
+        else:  
+            print(f"KeyError: {country} does not have values in that range") #KeyError raised because the country does not have values in the range.
+            return "Error 2"
 
     if use == 1:
         
@@ -58,6 +69,8 @@ def response_to_json(response, path, use=1, country="NA", listing_id="NA"):
         with open(path, "w") as f:
             json.dump(results, f)
 
+    return "Success"
+
 
 def get_admin_info(url= "https://airbnb-listings.p.rapidapi.com/v2/getadmins", country="GH"):
 
@@ -73,7 +86,9 @@ def get_admin_info(url= "https://airbnb-listings.p.rapidapi.com/v2/getadmins", c
     response = requests.get(url, headers=headers, params=querystring)
 
     # Convert the results from the get request to a json file
-    response_to_json(response=response, path=data_path, use=1, country=country)
+    report = response_to_json(response=response, path=data_path, use=1, country=country)
+
+    return report
     
 
 
@@ -87,16 +102,14 @@ def get_listing_by_georef(url = "https://airbnb-listings.p.rapidapi.com/v2/listi
 
     querystring = {"state":country, "offset":offset}
 
-    # If the offset is within range for the particular country
-    try: 
-        # Make request to the API and save the response
-        response = requests.get(url, headers=headers, params=querystring)
+  
+    # Make request to the API and save the response
+    response = requests.get(url, headers=headers, params=querystring)
 
-        # Convert the results from the get request to a json file
-        response_to_json(response=response, path=data_path, use=1, country=country)
+    # Convert the results from the get request to a json file
+    report = response_to_json(response=response, path=data_path, use=1, country=country)
 
-    except:
-        return
+    return report
 
 
 def get_listing_reviews(listing_id, url = "https://airbnb-listings.p.rapidapi.com/v2/listingReviews"):
@@ -113,7 +126,9 @@ def get_listing_reviews(listing_id, url = "https://airbnb-listings.p.rapidapi.co
     response = requests.get(url, headers=headers, params=querystring)
 
     # Convert the results from the get request to a json file
-    response_to_json(response=response, path=data_path, use=2, listing_id=listing_id)   
+    report = response_to_json(response=response, path=data_path, use=2, listing_id=listing_id)
+
+    return report
 
 
 def get_listing_descriptions(listing_id, url="https://airbnb-listings.p.rapidapi.com/v2/listing"):
@@ -130,10 +145,10 @@ def get_listing_descriptions(listing_id, url="https://airbnb-listings.p.rapidapi
     response = requests.get(url, headers=headers, params=querystring)
 
     # Convert the results from the get request to a json file
-    response_to_json(response=response, path=data_path, use=2, listing_id=listing_id)
+    report = response_to_json(response=response, path=data_path, use=2, listing_id=listing_id)
     
-
-
+    return report
+    
 
 
             
