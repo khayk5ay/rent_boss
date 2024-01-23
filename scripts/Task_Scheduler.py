@@ -44,28 +44,32 @@ print(f"Starting from number {offset}")
 """
 #TASK 1
 """
-# Only perform on the first day
-if offset_number == 0:
+def task_1():
     for c in countries: 
-        extract.get_admin_info(country=c)
+        report = extract.get_admin_info(country=c)
 
+        # Force stop the task if the quota has been exceeded
+        if report == "Error 1":
+            return
 
     
 """
 #TASK 2
 """
-# Only perform for the first 10 days
-if offset_number < 10:    
+def task_2():
     for c in countries:
         print(f"Extracting {c} for Day {offset_number + 1}")
-        extract.get_listing_by_georef(country=c, offset=offset, date_string=current_date_string)
+        report = extract.get_listing_by_georef(country=c, offset=offset, date_string=current_date_string)
 
+        # Force stop the task if the quota has been exceeded
+        if report == "Error 1":
+            return
 
 """
 TASK 3
 """
-# Only start after the 10th day
-if offset_number>=10:
+def task_3():
+    
     # Only listings with 8 digit listing ID should be queried for reviews .and descriptions
     listings_raw = pd.read_json(f"{base_path}/listing_georef.json")
     
@@ -86,8 +90,29 @@ if offset_number>=10:
         
     for each in range(task_start, task_end):
         #For each listing in the selected range for the day, get the listing reviews and the listing description
-        extract.get_listing_reviews(str(listings.iloc[each,0]))
-        extract.get_listing_descriptions(str(listings.iloc[each,0]))
+        report = extract.get_listing_reviews(str(listings.iloc[each,0]))
 
+        # Force stop the task if the quota has been exceeded
+        if report == "Error 1":
+            return
         
+        report = extract.get_listing_descriptions(str(listings.iloc[each,0]))
+
+        # Force stop the task if the quota has been exceeded
+        if report == "Error 1":
+            return
+
+
+
+# Only perform on the first day
+if offset_number == 0:
+    task_1()
+
+# Only perform for the first 10 days
+if offset_number < 10:
+    task_2()
+
+# Only start after the 10th day
+elif offset_number >=10:
+    task_3()
         
