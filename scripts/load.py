@@ -12,7 +12,7 @@ import pandas as pd
 
 base_path = os.environ["BASE_DIR"]
 
-def csv_to_sql():
+def json_to_sql():
     # Connect to database
     engine_object = Engine("rentboss")
 
@@ -21,16 +21,15 @@ def csv_to_sql():
     connection = engine.connect()
 
     for file in os.listdir(f"{base_path}/data"):
-        if file.endswith(".csv"):
-            table_name = file.split(".")[0]
-            df = pd.read_csv(f"{base_path}/data/{file}")
+        if file.endswith("_new.json"):
+            table_name = file.split("_new")[0]
+            df = pd.read_json(f"{base_path}/data/{file}")
             df.to_sql(name = table_name, con= connection, if_exists="replace",
-                      dtype={"airbnb_id": String(64), "last_avail_check": DateTime, "last_updated": DateTime,  "last_ratings":DateTime})
+                      dtype={"listing_id": String(64), "last_avail_check": DateTime, "last_updated": DateTime,  "last_ratings":DateTime})
 
 
 
 def main():
-    csv_to_sql()
+    json_to_sql()
 
 
-main()
