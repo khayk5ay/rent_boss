@@ -12,7 +12,7 @@ import datetime
 # Load environment variables
 
 load_dotenv()
-base_path = os.environ["BASE_DIR"]+"/data/prelim"
+base_path = os.environ["BASE_DIR"]+"/data"
 
 
 headers = {
