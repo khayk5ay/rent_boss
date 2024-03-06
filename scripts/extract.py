@@ -26,7 +26,7 @@ os.makedirs(base_path, exist_ok=True)
 # Get a list of the country codes that we will be using
 countries = pd.read_csv(f"{base_path}/countries.csv")["country_code"].str.strip()
 
-def json_filer(results, path):
+def response_to_json(results, path):
 
     # Extend the already exisitng json file with new information 
     try:
@@ -44,7 +44,7 @@ def json_filer(results, path):
     return "Success"
 
 
-def response_to_json(response, path, use=1, country="NA", listing_id="NA"):
+def extend_results(response, use=1, country="NA", listing_id="NA"):
 
     try: 
         # Extract the results from the get request response
@@ -88,9 +88,9 @@ def get_admin_info(url= "https://airbnb-listings.p.rapidapi.com/v2/getadmins", c
     response = requests.get(url, headers=headers, params=querystring)
 
     # Convert the results from the get request to a json file
-    result = response_to_json(response=response, use=1, country=country)
+    result = extend_results(response=response, use=1, country=country)
     
-    report = json_filer(result, path=data_path)
+    report = response_to_json(result, path=data_path)
 
     return report
     
@@ -111,8 +111,9 @@ def get_listing_by_georef(url = "https://airbnb-listings.p.rapidapi.com/v2/listi
     response = requests.get(url, headers=headers, params=querystring)
 
     # Convert the results from the get request to a json file
-    result = response_to_json(response=response, use=1, country=country)
-    report = json_filer(result, path=data_path)
+    result = extend_results(response=response, use=1, country=country)
+    
+    report = response_to_json(result, path=data_path)
 
     return report
 
@@ -131,9 +132,10 @@ def get_listing_reviews(listing_id, url = "https://airbnb-listings.p.rapidapi.co
     response = requests.get(url, headers=headers, params=querystring)
 
     # Convert the results from the get request to a json file
-    result = response_to_json(response=response, use=2, listing_id=listing_id)
+    result = extend_results(response=response, use=2, listing_id=listing_id)
 
-    report = json_filer(result, path=data_path)
+    report = response_to_json(result, path=data_path)
+    
     return report
 
 
@@ -151,9 +153,9 @@ def get_listing_descriptions(listing_id, url="https://airbnb-listings.p.rapidapi
     response = requests.get(url, headers=headers, params=querystring)
 
     # Convert the results from the get request to a json file
-    result = response_to_json(response=response, use=2, listing_id=listing_id)
+    result = extend_results(response=response, use=2, listing_id=listing_id)
 
-    report = json_filer(result, path=data_path)
+    report = response_to_json(result, path=data_path)
     
     return report
     
