@@ -68,6 +68,23 @@ def task_2():
 """
 TASK 3
 """
+
+# Establish task_start and task_end
+def task_3_2(listings):
+
+    # Create start and end for looping through the dataframe, for offset 10, the request will start from the first listing in the dataframe [(10-10) * 20 = 0]
+    # for the offset 11, the request will start from the 21st listing in the dataframe [(11-10) * 20 = 20], and so on...
+    start = (offset_number-10) * 20
+    
+    end = start + 20
+
+    # Check if within the range of the dataframe, else change the end to the dataframe length
+    if end >= len(listings):
+        end = len(listings)
+
+    return start, end
+
+
 def task_3():
     
     # Only listings with 8 digit listing ID should be queried for reviews .and descriptions
@@ -75,19 +92,9 @@ def task_3():
     
     #Filter listings for IDs that have reviews and descriptions (Only IDs less than 9 digits)
     listings = listings_raw[(listings_raw["airbnb_id"]).astype(str).str.len() < 9].reset_index(drop=True)
-
     
-    # Create start and end for looping through the dataframe, for offset 10, the request will start from the first listing in the dataframe [(10-10) * 20 = 0]
-    # for the offset 11, the request will start from the 21st listing in the dataframe [(11-10) * 20 = 20], and so on...
-    task_start = (offset_number-10) * 20
-    
-    task_end = task_start + 20
+    task_start, task_end = task_3_2(listings)
 
-    # Check if within the range of the dataframe, else change the end to the dataframe length
-    if task_end >= len(listings):
-        task_end = len(listings)
-
-        
     for each in range(task_start, task_end):
         #For each listing in the selected range for the day, get the listing reviews and the listing description
         report = extract.get_listing_reviews(str(listings.iloc[each,0]))
