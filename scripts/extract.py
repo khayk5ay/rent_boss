@@ -46,21 +46,9 @@ def response_to_json(results, path):
 
 def extend_results(response, use=1, country="NA", listing_id="NA"):
 
-    try: 
-        # Extract the results from the get request response
-        results = response.json()["results"]
-    except KeyError:
-        # When the quota is exceeded for the day, then there is no result and it will throw key error.
-        # If the country does not have any values in the range covered, then there won't be any result and it will throw keyerror.
-        # To differentiate the causes of the keyerror, use the if else block.
-        if country == "NA" : #Meaning it is not about the country not having values in the range of the offset.
-            print("Quota exceeded for today")
-            return "Error 1" 
-        else:  
-            print(f"KeyError: {country} does not have values in that range") #KeyError raised because the country does not have values in the range.
-            return "Error 2"
 
-
+    results = response.json()["results"]
+    
     for i in results:
         if use == 1:
             # Add a key value pair to specify the country for each entry
@@ -86,6 +74,20 @@ def get_admin_info(url= "https://airbnb-listings.p.rapidapi.com/v2/getadmins", c
 
     # Make request to the API and save the response
     response = requests.get(url, headers=headers, params=querystring)
+
+    try: 
+        # Extract the results from the get request response
+        results = response.json()["results"]
+    except KeyError:
+        # When the quota is exceeded for the day, then there is no result and it will throw key error.
+        # If the country does not have any values in the range covered, then there won't be any result and it will throw keyerror.
+        # To differentiate the causes of the keyerror, use the if else block.
+        if country == "NA" : #Meaning it is not about the country not having values in the range of the offset.
+            print("Quota exceeded for today")
+            return "Error 1" 
+        else:  
+            print(f"KeyError: {country} does not have values in that range") #KeyError raised because the country does not have values in the range.
+            return "Error 2"
 
     # Convert the results from the get request to a json file
     result = extend_results(response=response, use=1, country=country)
