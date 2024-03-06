@@ -9,6 +9,7 @@ I focused on accommodation in 7 specific countries in West Africa.
 
 
 **extract.py**
+
 This script contains the API calls to collect certain information about the properties
 -The administrative regions and names in each of the countries
 -The listing IDs of listings in the countries
@@ -17,11 +18,13 @@ This script contains the API calls to collect certain information about the prop
 
 
 **transform.py**
+
 This script converts the information saved in json files to csv files and cleans the data to ensure that it is easily ingested into the database
 - Null values in admin_info are replaced with relevant values
 
   
 **load.py**
+
 Here, all csv files in the data folder are loaded into the already existing database
 -The column datatypes are specified
 -The column constraints are specified
