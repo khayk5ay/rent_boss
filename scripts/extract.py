@@ -42,19 +42,16 @@ def response_to_json(response, path, use=1, country="NA", listing_id="NA"):
             print(f"KeyError: {country} does not have values in that range") #KeyError raised because the country does not have values in the range.
             return "Error 2"
 
-    if use == 1:
-        
-        # Add a key value pair to specify the country for each entry
-        # This is necessary because each json file will contain information for multiple countries
-        for i in results:
-            i["country"] = country
-    elif use == 2:
 
-        # Add a key value pair to specify the listing id for each entry
-        # This is necessary because each json file will contain information for listings
-        for i in results:
-            i["listing_id"] = listing_id
-        
+    for i in results:
+        if use == 1:
+            # Add a key value pair to specify the country for each entry
+            # This is necessary because each json file will contain information for multiple countries
+            i["country"] = country
+        elif use == 2:
+            # Add a key value pair to specify the listing id for each entry
+            # This is necessary because each json file will contain information for listings
+            i["listing_id"] = listing_id 
 
     # Extend the already exisitng json file with new country information 
     try:
