@@ -23,3 +23,7 @@ load.py
 Here, all csv files in the data folder are loaded into the already existing database
 -The column datatypes are specified
 -The column constraints are specified
+
+Code Climate Maintainability
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/1d49865c936e74b1b8e2/maintainability)](https://codeclimate.com/github/khayk5ay/rent_boss/maintainability)
